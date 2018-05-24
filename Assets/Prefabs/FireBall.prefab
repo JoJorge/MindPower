@@ -114,7 +114,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fly_Speed: 0.5
-  score: 0
+  Score_Text: {fileID: 0}
+  Explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+  sExplosion: {fileID: 0}
 --- !u!114 &114440646177795060
 MonoBehaviour:
   m_ObjectHideFlags: 1
