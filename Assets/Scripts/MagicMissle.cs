@@ -2,17 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicMissle : MonoBehaviour {
+[RequireComponent(typeof(Rigidbody))]
+public abstract class MagicMissle : MonoBehaviour {
 
     public enum MagicType{Fire, Ice};
+    protected MagicType type;
+    protected float speed = 15f;
+    protected float power;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public virtual void Start() {
+        Rigidbody rigid = GetComponent<Rigidbody> ();
+        rigid.velocity = Vector3.forward * speed;
+    }
+    public void setPower(float p) {
+        power = p;
+    }
+    protected abstract void explode();
+    public void OnTriggerEnter(Collider collider) {
+        if (collider.tag == "Enemy") {
+            explode ();
+            Destroy (gameObject);
+        }
+    }
 }

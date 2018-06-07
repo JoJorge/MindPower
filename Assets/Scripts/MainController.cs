@@ -29,9 +29,12 @@ public class MainController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (controllable) {
+            if (Input.GetKeyDown (KeyCode.H)) {
+                magicController.directShoot ();
+            }
             if (Input.GetKeyDown (KeyCode.Space)) {
                 nowOrb.transform.Find ("Orb").gameObject.SetActive(true);
-                magicController.startReading ();
+                magicController.startReading (nowMagicType, nowOrb.transform.Find ("Orb").gameObject);
             }
             if (Input.GetKeyUp (KeyCode.Space)) {
                 nowOrb.transform.Find ("Orb").gameObject.SetActive(false);
