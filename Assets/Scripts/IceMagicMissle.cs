@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireMagicMissle : MagicMissle {
+public class IceMagicMissle : MagicMissle {
 
     [SerializeField] private GameObject explosion;
 
@@ -12,11 +12,9 @@ public class FireMagicMissle : MagicMissle {
 
     protected override void explode () {
         float range = power / 20 + 3;
-        float damage = power;
 
         GameObject exp = GameObject.Instantiate (explosion, transform.position, Quaternion.identity);
         exp.transform.localScale = Vector3.one * range;
-
-        //TODO: give damage to zombies in range
     }
+
 }

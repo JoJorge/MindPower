@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 400010}
   - component: {fileID: 11400002}
   - component: {fileID: 11400000}
+  - component: {fileID: 114293627009564702}
   m_Layer: 0
   m_Name: FireExplosionMobile
   m_TagString: Untagged
@@ -3506,7 +3507,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 2
+  scalingMode: 0
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -6820,7 +6821,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 2
+  scalingMode: 0
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -10164,7 +10165,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 2
+  scalingMode: 0
   randomSeed: -1191237381
   InitialModule:
     serializedVersion: 3
@@ -10808,7 +10809,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 200
+      scalar: 5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -13640,3 +13641,15 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100010}
   m_IsPrefabParent: 1
+--- !u!114 &114293627009564702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794c5c8a8d6e99442905bd281be69ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Destroy_Time: 4

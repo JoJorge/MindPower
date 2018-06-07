@@ -47,7 +47,7 @@ public class CircleReadingStrategy : ReadingStrategy {
                 circle.fillAmount += speed;
                 if (circle.fillAmount == 1) {
                     completeness = true;
-                    power = 200;
+                    power = 80;
                 }
             }
             else {

@@ -142,6 +142,7 @@ MonoBehaviour:
   fireThresholds: 30
   iceThresholds: 30
   fireball: {fileID: 1387350351228178, guid: 966cfb6e790aa6f4cb70b22d8222ae59, type: 2}
+  iceball: {fileID: 1652405182666608, guid: c6f319d4e994bab4a9ec687f494441df, type: 2}
 --- !u!4 &36206705
 Transform:
   m_ObjectHideFlags: 0

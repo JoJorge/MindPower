@@ -10,6 +10,7 @@ public class MagicController : MonoBehaviour {
     [SerializeField] private float fireThresholds;
     [SerializeField] private float iceThresholds;
     [SerializeField] private GameObject fireball;
+    [SerializeField] private GameObject iceball;
     private GameObject orbCore;
     private TGCConnectionController controller;
 
@@ -71,10 +72,14 @@ public class MagicController : MonoBehaviour {
             GameObject missle = GameObject.Instantiate (fireball, Camera.main.transform.position + 1.2f * Vector3.down, Quaternion.identity);
             missle.GetComponent<FireMagicMissle> ().setPower (power);
         }
+        else {
+            GameObject missle = GameObject.Instantiate (iceball, Camera.main.transform.position + 1.2f * Vector3.down, Quaternion.identity);
+            missle.GetComponent<IceMagicMissle> ().setPower (power);
+        }
     }
     public void directShoot() {
-        GameObject missle = GameObject.Instantiate (fireball, Camera.main.transform.position + 1.2f * Vector3.down, Quaternion.identity);
-        missle.GetComponent<FireMagicMissle> ().setPower (200);
+        GameObject missle = GameObject.Instantiate (iceball, Camera.main.transform.position + 1.2f * Vector3.down, Quaternion.identity);
+        missle.GetComponent<IceMagicMissle> ().setPower (50);
     }
     private void changeOrb(int value) {
         orbCore.transform.localScale = Vector3.one * (float)value / 100 * 3;
