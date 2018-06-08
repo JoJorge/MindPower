@@ -7,11 +7,11 @@ public class EnlargeReadingStrategy : ReadingStrategy {
 
     private Image circle;
     private Sprite circleSprite;
-    private float speed = 0.1f;
-    private float dropSpeed = 0.06f;
+    private float speed = 0.2f;
+    private float dropSpeed = 0.08f;
 
     public EnlargeReadingStrategy(float th, Sprite c) : base(th) {
-        circle = GameObject.Find ("Circle").GetComponent<Image> ();
+        circle = GameObject.Find("Canvas").transform.Find("Circle").GetComponent<Image> ();
         circleSprite = c;
     }
 

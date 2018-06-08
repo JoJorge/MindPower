@@ -16,7 +16,7 @@ public class MainController : MonoBehaviour {
     #region Behaviours
     void Start () {
         Debug.Assert (magicController != null);
-        controllable = true;
+        controllable = false;
         if (nowMagicType == MagicMissle.MagicType.Fire) {
             nowOrb = fireOrb;
         }

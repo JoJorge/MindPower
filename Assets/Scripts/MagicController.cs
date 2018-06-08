@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MagicController : MonoBehaviour {
 
+    #region Variables
     private bool reading;
     private MagicMissle.MagicType readingMagicType;
     private Dictionary<MagicMissle.MagicType, ReadingStrategy> type2strategy;
@@ -13,8 +14,9 @@ public class MagicController : MonoBehaviour {
     [SerializeField] private GameObject iceball;
     private GameObject orbCore;
     private TGCConnectionController controller;
+    #endregion
 
-	void Start () {
+    public void Start () {
         reading = false;
         controller = GameObject.Find("NeuroSkyTGCController").GetComponent<TGCConnectionController>();
         type2strategy = new Dictionary<MagicMissle.MagicType, ReadingStrategy> ();
@@ -23,22 +25,18 @@ public class MagicController : MonoBehaviour {
         circle = Resources.Load<Sprite> ("IceCircle");
         type2strategy.Add (MagicMissle.MagicType.Ice, new EnlargeReadingStrategy(iceThresholds, circle));
 	}
-	
-	void Update () {
-		
-	}
 
+    #region Functions
     public bool isReading() {
         return reading;
     }
-    // TODO
-    public void setReadingStrategy() {
+    public void setReadingStrategy(MagicMissle.MagicType type, ReadingStrategy rs) {
+        type2strategy [type] = rs;
     }
     public void startReading(MagicMissle.MagicType type, GameObject core) {
         reading = true;
         orbCore = core;
         readingMagicType = type;
-        // TODO: start reading strategy
         type2strategy [type].init ();
         if (type == MagicMissle.MagicType.Fire) {    
             controller.UpdateAttentionEvent += type2strategy [type].readMind;
@@ -79,9 +77,10 @@ public class MagicController : MonoBehaviour {
     }
     public void directShoot() {
         GameObject missle = GameObject.Instantiate (iceball, Camera.main.transform.position + 1.2f * Vector3.down, Quaternion.identity);
-        missle.GetComponent<IceMagicMissle> ().setPower (50);
+        missle.GetComponent<IceMagicMissle> ().setPower (30);
     }
     private void changeOrb(int value) {
         orbCore.transform.localScale = Vector3.one * (float)value / 100 * 3;
     }
+    #endregion
 }

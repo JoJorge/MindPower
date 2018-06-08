@@ -19,7 +19,7 @@ public abstract class MagicMissle : MonoBehaviour {
     }
     protected abstract void explode();
     public void OnTriggerEnter(Collider collider) {
-        if (collider.tag == "Enemy") {
+        if (collider.CompareTag("Enemy") || collider.CompareTag("Wall")) {
             explode ();
             Destroy (gameObject);
         }

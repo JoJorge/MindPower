@@ -13,7 +13,7 @@ public class CircleReadingStrategy : ReadingStrategy {
     private bool completing;
 
     public CircleReadingStrategy(float th, Sprite c) : base(th){
-        circle = GameObject.FindObjectOfType<Image>().GetComponent<Image> ();
+        circle = GameObject.Find("Canvas").transform.Find("Circle").GetComponent<Image> ();
         circleSprite = c;
         lowThreshold = th - 10;
         completeness = false;
@@ -32,6 +32,7 @@ public class CircleReadingStrategy : ReadingStrategy {
         completing = false;
         circle.sprite = circleSprite;
         circle.fillAmount = 0;
+        circle.transform.localScale = Vector3.one;
     }
     public override void readMind (int value) {
         if (completeness) {
