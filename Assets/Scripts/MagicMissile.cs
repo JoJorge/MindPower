@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public abstract class MagicMissle : MonoBehaviour {
+public abstract class MagicMissile : MonoBehaviour {
 
     public enum MagicType{Fire, Ice};
     protected MagicType type;

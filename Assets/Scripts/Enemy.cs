@@ -8,12 +8,16 @@ public class Enemy : MonoBehaviour {
     protected int HP = 50;
     [SerializeField] protected float speed;
     protected int power = 10;
+	protected float freezedTime;
+	protected bool freezing;
 
 	// Use this for initialization
 	void Start () {
         GetComponent<Rigidbody> ().velocity = Vector3.back * speed;
+		freezedTime = 0.0f;
+		freezing = false;
 	}
-
+		
     public void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag ("Player")) {
             attack ();
@@ -26,10 +30,23 @@ public class Enemy : MonoBehaviour {
             die ();
         }
     }
-    public IEnumerator stop(float stopTime) {
+	public bool isFreezing() {
+		return freezing;
+	}
+	public void addFreezeTime(float time) {
+		freezedTime += time;
+	}
+    public IEnumerator freeze(float stopTime) {
+		freezing = true;
+		freezedTime = stopTime;
         GetComponent<Rigidbody> ().velocity = Vector3.zero;
-        yield return new WaitForSecondsRealtime (stopTime);
+		while (freezedTime > 0) {
+			float tmp = freezedTime;
+			freezedTime = 0;
+			yield return new WaitForSecondsRealtime (tmp);
+		}
         GetComponent<Rigidbody> ().velocity = Vector3.back * speed;
+		freezing = false;
         yield return null;
     }
     protected void die() {

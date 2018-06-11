@@ -6,8 +6,8 @@ public class MagicController : MonoBehaviour {
 
     #region Variables
     private bool reading;
-    private MagicMissle.MagicType readingMagicType;
-    private Dictionary<MagicMissle.MagicType, ReadingStrategy> type2strategy;
+    private MagicMissile.MagicType readingMagicType;
+    private Dictionary<MagicMissile.MagicType, ReadingStrategy> type2strategy;
     [SerializeField] private float fireThresholds;
     [SerializeField] private float iceThresholds;
     [SerializeField] private GameObject fireball;
@@ -19,26 +19,26 @@ public class MagicController : MonoBehaviour {
     public void Start () {
         reading = false;
         controller = GameObject.Find("NeuroSkyTGCController").GetComponent<TGCConnectionController>();
-        type2strategy = new Dictionary<MagicMissle.MagicType, ReadingStrategy> ();
+        type2strategy = new Dictionary<MagicMissile.MagicType, ReadingStrategy> ();
         Sprite circle = Resources.Load<Sprite> ("FireCircle");
-        type2strategy.Add (MagicMissle.MagicType.Fire, new CircleReadingStrategy(fireThresholds, circle));
+        type2strategy.Add (MagicMissile.MagicType.Fire, new CircleReadingStrategy(fireThresholds, circle));
         circle = Resources.Load<Sprite> ("IceCircle");
-        type2strategy.Add (MagicMissle.MagicType.Ice, new EnlargeReadingStrategy(iceThresholds, circle));
+        type2strategy.Add (MagicMissile.MagicType.Ice, new EnlargeReadingStrategy(iceThresholds, circle));
 	}
 
     #region Functions
     public bool isReading() {
         return reading;
     }
-    public void setReadingStrategy(MagicMissle.MagicType type, ReadingStrategy rs) {
+    public void setReadingStrategy(MagicMissile.MagicType type, ReadingStrategy rs) {
         type2strategy [type] = rs;
     }
-    public void startReading(MagicMissle.MagicType type, GameObject core) {
+    public void startReading(MagicMissile.MagicType type, GameObject core) {
         reading = true;
         orbCore = core;
         readingMagicType = type;
         type2strategy [type].init ();
-        if (type == MagicMissle.MagicType.Fire) {    
+        if (type == MagicMissile.MagicType.Fire) {    
             controller.UpdateAttentionEvent += type2strategy [type].readMind;
             controller.UpdateAttentionEvent += changeOrb;
         }
@@ -55,7 +55,7 @@ public class MagicController : MonoBehaviour {
             shoot (power);
         }
         type2strategy [readingMagicType].init ();
-        if (readingMagicType == MagicMissle.MagicType.Fire) {
+        if (readingMagicType == MagicMissile.MagicType.Fire) {
             
             controller.UpdateAttentionEvent -= type2strategy [readingMagicType].readMind;
             controller.UpdateAttentionEvent -= changeOrb;
@@ -66,18 +66,18 @@ public class MagicController : MonoBehaviour {
         }
     }
     private void shoot(float power) {
-        if (readingMagicType == MagicMissle.MagicType.Fire) {
+        if (readingMagicType == MagicMissile.MagicType.Fire) {
             GameObject missle = GameObject.Instantiate (fireball, Camera.main.transform.position + 1.2f * Vector3.down, Quaternion.identity);
-            missle.GetComponent<FireMagicMissle> ().setPower (power);
+            missle.GetComponent<FireMagicMissile> ().setPower (power);
         }
         else {
             GameObject missle = GameObject.Instantiate (iceball, Camera.main.transform.position + 1.2f * Vector3.down, Quaternion.identity);
-            missle.GetComponent<IceMagicMissle> ().setPower (power);
+            missle.GetComponent<IceMagicMissile> ().setPower (power);
         }
     }
     public void directShoot() {
         GameObject missle = GameObject.Instantiate (iceball, Camera.main.transform.position + 1.2f * Vector3.down, Quaternion.identity);
-        missle.GetComponent<IceMagicMissle> ().setPower (30);
+        missle.GetComponent<IceMagicMissile> ().setPower (30);
     }
     private void changeOrb(int value) {
         orbCore.transform.localScale = Vector3.one * (float)value / 100 * 3;

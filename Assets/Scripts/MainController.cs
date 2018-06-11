@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainController : MonoBehaviour {
 
     #region Variables
-    [SerializeField] private MagicMissle.MagicType nowMagicType;
+    [SerializeField] private MagicMissile.MagicType nowMagicType;
     private bool controllable;
     [SerializeField] private MagicController magicController;
     [SerializeField] private GameObject fireOrb;
@@ -17,7 +17,7 @@ public class MainController : MonoBehaviour {
     void Start () {
         Debug.Assert (magicController != null);
         controllable = false;
-        if (nowMagicType == MagicMissle.MagicType.Fire) {
+        if (nowMagicType == MagicMissile.MagicType.Fire) {
             nowOrb = fireOrb;
         }
         else {
@@ -61,14 +61,14 @@ public class MainController : MonoBehaviour {
         if (magicController.isReading ()) {
             return;
         }
-        if (nowMagicType == MagicMissle.MagicType.Fire) {
+        if (nowMagicType == MagicMissile.MagicType.Fire) {
             nowOrb.SetActive (false);
-            nowMagicType = MagicMissle.MagicType.Ice;
+            nowMagicType = MagicMissile.MagicType.Ice;
             nowOrb = iceOrb;
         }
         else {
             nowOrb.SetActive (false);
-            nowMagicType = MagicMissle.MagicType.Fire;
+            nowMagicType = MagicMissile.MagicType.Fire;
             nowOrb = fireOrb;
         }
         nowOrb.SetActive (true);

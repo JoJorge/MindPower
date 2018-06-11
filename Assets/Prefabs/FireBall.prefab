@@ -23,10 +23,10 @@ GameObject:
   - component: {fileID: 135660977803093016}
   - component: {fileID: 65651814051207546}
   - component: {fileID: 23433306431916444}
-  - component: {fileID: 114590142124244540}
   - component: {fileID: 54404272392532514}
+  - component: {fileID: 114006962629271506}
   m_Layer: 0
-  m_Name: Fireball
+  m_Name: FireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 2, z: 1.6544323}
   m_Center: {x: 0, y: 0, z: 0.32721615}
---- !u!114 &114590142124244540
+--- !u!114 &114006962629271506
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1387350351228178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9659a1a835c3e344ca2f6141cd9b5e33, type: 3}
+  m_Script: {fileID: 11500000, guid: 0835250125bf56f44b2c781193e4814d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 100010, guid: c42b175237e1cf34e92e1e1bbae69f1f, type: 2}
