@@ -21,14 +21,23 @@ public class MagicController : MonoBehaviour {
         reading = false;
         controller = GameObject.Find("NeuroSkyTGCController").GetComponent<TGCConnectionController>();
         type2strategy = new Dictionary<MagicMissile.MagicType, ReadingStrategy> ();
+
         Sprite circle = Resources.Load<Sprite> ("FireCircle");
-        type2strategy.Add (MagicMissile.MagicType.Fire, new CircleReadingStrategy(fireThresholds, circle));
+        type2strategy.Add (MagicMissile.MagicType.Fire, new CircleReadingStrategy(fireThresholds, circle, 50));
+        /*
+        GameObject ball = Resources.Load<GameObject> ("FireballEffect");
+        type2strategy.Add (MagicMissile.MagicType.Fire, new EnlargeBallReadingStrategy(fireThresholds, ball, 20));
+        */
         /*
         circle = Resources.Load<Sprite> ("IceCircle");
         type2strategy.Add (MagicMissile.MagicType.Ice, new EnlargeCircleReadingStrategy(iceThresholds, circle));
         */
+        /*
+        circle = Resources.Load<Sprite> ("IceCircle");
+        type2strategy.Add (MagicMissile.MagicType.Ice, new CircleReadingStrategy(iceThresholds, circle));
+        */
         GameObject ball = Resources.Load<GameObject> ("IceballEffect");
-        type2strategy.Add (MagicMissile.MagicType.Ice, new EnlargeBallReadingStrategy(iceThresholds, ball));
+        type2strategy.Add (MagicMissile.MagicType.Ice, new EnlargeBallReadingStrategy(iceThresholds, ball, 20));
 	}
     #endregion
 

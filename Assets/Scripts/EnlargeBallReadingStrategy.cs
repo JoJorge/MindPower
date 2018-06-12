@@ -8,16 +8,18 @@ public class EnlargeBallReadingStrategy : ReadingStrategy {
     private float speed = 0.2f;
     private float dropSpeed = 0.08f;
     private float powerTh = 30;
+    private float minBallSize;
 
-    public EnlargeBallReadingStrategy(float th, GameObject b) : base(th) {
+    public EnlargeBallReadingStrategy(float th, GameObject b, float mbs) : base(th) {
         ball = b;
         ball = GameObject.Instantiate (ball, Player.Instance.transform.Find("BallPosition"));
         ball.transform.localScale = Vector3.one;
         ball.SetActive (false);
+        minBallSize = mbs;
     }
 
     public override float getResult () {
-        if (power < 20)
+        if (power < minBallSize)
             return 0;
         return base.getResult ();
     }

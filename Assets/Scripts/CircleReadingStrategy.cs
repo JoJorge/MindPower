@@ -10,16 +10,17 @@ public class CircleReadingStrategy : ReadingStrategy {
     private Image circle;
     private Sprite circleSprite;
     private float lowThreshold;
-    private float speed = 0.1f;
+    private float speed = 0.125f;
     private bool completing;
     #endregion
 
-    public CircleReadingStrategy(float th, Sprite c) : base(th){
+    public CircleReadingStrategy(float th, Sprite c, float fp) : base(th){
         circle = GameObject.Find("Canvas").transform.Find("Circle").GetComponent<Image> ();
         circleSprite = c;
         lowThreshold = th - 10;
         completeness = false;
         completing = false;
+        power = fp;
     }
 
     #region Functions
@@ -55,7 +56,6 @@ public class CircleReadingStrategy : ReadingStrategy {
                 circle.fillAmount += speed;
                 if (circle.fillAmount == 1) {
                     completeness = true;
-                    power = 50;
                 }
             }
             else {
