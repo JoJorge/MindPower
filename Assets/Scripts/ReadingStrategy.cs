@@ -16,5 +16,6 @@ public abstract class ReadingStrategy {
         return power;
     }
     public abstract void init ();
+    public abstract void close();
     public abstract void readMind(int value);
 }

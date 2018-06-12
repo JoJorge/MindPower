@@ -38,6 +38,9 @@ public class CircleReadingStrategy : ReadingStrategy {
         circle.fillAmount = 0;
         circle.transform.localScale = Vector3.one;
     }
+    public override void close () {
+        circle.transform.localScale = Vector3.zero;
+    }
     public override void readMind (int value) {
         if (completeness) {
             return;
@@ -52,7 +55,7 @@ public class CircleReadingStrategy : ReadingStrategy {
                 circle.fillAmount += speed;
                 if (circle.fillAmount == 1) {
                     completeness = true;
-                    power = 80;
+                    power = 50;
                 }
             }
             else {

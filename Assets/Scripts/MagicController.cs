@@ -23,8 +23,12 @@ public class MagicController : MonoBehaviour {
         type2strategy = new Dictionary<MagicMissile.MagicType, ReadingStrategy> ();
         Sprite circle = Resources.Load<Sprite> ("FireCircle");
         type2strategy.Add (MagicMissile.MagicType.Fire, new CircleReadingStrategy(fireThresholds, circle));
+        /*
         circle = Resources.Load<Sprite> ("IceCircle");
-        type2strategy.Add (MagicMissile.MagicType.Ice, new EnlargeReadingStrategy(iceThresholds, circle));
+        type2strategy.Add (MagicMissile.MagicType.Ice, new EnlargeCircleReadingStrategy(iceThresholds, circle));
+        */
+        GameObject ball = Resources.Load<GameObject> ("IceballEffect");
+        type2strategy.Add (MagicMissile.MagicType.Ice, new EnlargeBallReadingStrategy(iceThresholds, ball));
 	}
     #endregion
 
@@ -56,7 +60,7 @@ public class MagicController : MonoBehaviour {
         if (power > 0) {
             shoot (power);
         }
-        type2strategy [readingMagicType].init ();
+        type2strategy [readingMagicType].close ();
         if (readingMagicType == MagicMissile.MagicType.Fire) {
             
             controller.UpdateAttentionEvent -= type2strategy [readingMagicType].readMind;
@@ -69,7 +73,7 @@ public class MagicController : MonoBehaviour {
     }
     private void shoot(float power) {
         if (readingMagicType == MagicMissile.MagicType.Fire) {
-            GameObject missle = GameObject.Instantiate (fireball, Camera.main.transform.position + 1.2f * Vector3.down, Quaternion.identity);
+            GameObject missle = GameObject.Instantiate (fireball, Camera.main.transform.position + Vector3.down + Vector3.forward, Quaternion.identity);
             missle.GetComponent<FireMagicMissile> ().setPower (power);
         }
         else {
@@ -78,7 +82,7 @@ public class MagicController : MonoBehaviour {
         }
     }
     public void directShoot() {
-        GameObject missle = GameObject.Instantiate (iceball, Camera.main.transform.position + 1.2f * Vector3.down, Quaternion.identity);
+        GameObject missle = GameObject.Instantiate (iceball, Camera.main.transform.position + Vector3.down + Vector3.forward, Quaternion.identity);
         missle.GetComponent<IceMagicMissile> ().setPower (30);
     }
     private void changeOrb(int value) {

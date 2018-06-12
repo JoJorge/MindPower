@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour {
     protected int power = 10;
 	protected float freezedTime;
 	protected bool freezing;
+    [SerializeField] private Material frozenMat;
+    private Material originMat;
     #endregion
 
     #region Behaviours
@@ -18,6 +20,7 @@ public class Enemy : MonoBehaviour {
         GetComponent<Rigidbody> ().velocity = Vector3.back * speed;
 		freezedTime = 0.0f;
 		freezing = false;
+        originMat = GetComponent<MeshRenderer> ().material;
 	}
 		
     public void OnCollisionEnter(Collision collision) {
@@ -44,11 +47,13 @@ public class Enemy : MonoBehaviour {
 		freezing = true;
 		freezedTime = stopTime;
         GetComponent<Rigidbody> ().velocity = Vector3.zero;
+        GetComponent<MeshRenderer> ().material = frozenMat;
 		while (freezedTime > 0) {
 			float tmp = freezedTime;
 			freezedTime = 0;
 			yield return new WaitForSecondsRealtime (tmp);
 		}
+        GetComponent<MeshRenderer> ().material = originMat;
         GetComponent<Rigidbody> ().velocity = Vector3.back * speed;
 		freezing = false;
         yield return null;

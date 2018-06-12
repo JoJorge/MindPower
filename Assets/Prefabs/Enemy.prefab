@@ -124,3 +124,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
+  frozenMat: {fileID: 2100000, guid: d52f9fe71a7d43446b7fec9c18c22947, type: 2}

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnlargeReadingStrategy : ReadingStrategy {
+public class EnlargeCircleReadingStrategy : ReadingStrategy {
 
     private Image circle;
     private Sprite circleSprite;
     private float speed = 0.2f;
     private float dropSpeed = 0.08f;
 
-    public EnlargeReadingStrategy(float th, Sprite c) : base(th) {
+    public EnlargeCircleReadingStrategy(float th, Sprite c) : base(th) {
         circle = GameObject.Find("Canvas").transform.Find("Circle").GetComponent<Image> ();
         circleSprite = c;
     }
@@ -20,6 +20,9 @@ public class EnlargeReadingStrategy : ReadingStrategy {
         circle.sprite = circleSprite;
         circle.fillAmount = 1;
         power = 0;
+    }
+    public override void close () {
+        circle.transform.localScale = Vector3.zero;
     }
     public override void readMind (int value) {
         if (value > threshold) {
