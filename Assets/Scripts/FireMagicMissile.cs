@@ -11,7 +11,7 @@ public class FireMagicMissile : MagicMissile {
         int damage = (int)power;
 
         GameObject exp = GameObject.Instantiate (explosion, transform.position, Quaternion.identity);
-        exp.transform.localScale = Vector3.one * range;
+        exp.transform.localScale = Vector3.one * range / 3;
 
         //TODO: give damage to zombies in range
         Collider[] colliders = Physics.OverlapSphere(transform.position, range);

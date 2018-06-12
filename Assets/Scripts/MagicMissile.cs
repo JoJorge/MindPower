@@ -16,6 +16,7 @@ public abstract class MagicMissile : MonoBehaviour {
     }
     public void setPower(float p) {
         power = p;
+        transform.GetChild (0).localScale = Vector3.one * power / 100;
     }
     protected abstract void explode();
     public void OnTriggerEnter(Collider collider) {

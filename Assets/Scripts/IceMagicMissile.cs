@@ -11,7 +11,7 @@ public class IceMagicMissile : MagicMissile {
         float stopTime = 5 + power / 20;
 
         GameObject exp = GameObject.Instantiate (explosion, transform.position, Quaternion.identity);
-        exp.transform.localScale = Vector3.one * range;
+        exp.transform.localScale = Vector3.one * range * 1.3f;
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, range);
         foreach (Collider collider in colliders) {

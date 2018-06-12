@@ -92,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 1277991133386550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4829826521673882}
   - {fileID: 4495860366972434}
@@ -119,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1387350351228178}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.61, y: 6.7, z: -42.83}
+  m_LocalPosition: {x: -0.52, y: 5.8, z: -17.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4051312035709968}
@@ -274,7 +274,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -371,7 +371,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 435041527
+  randomSeed: -67682282
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3652,7 +3652,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 910034890
+  randomSeed: -302783108
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6933,7 +6933,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 380872938
+  randomSeed: 78288055
   InitialModule:
     serializedVersion: 3
     enabled: 1
