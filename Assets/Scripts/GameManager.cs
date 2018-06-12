@@ -19,12 +19,16 @@ public class GameManager : MonoBehaviour {
             return instance;
         }
     }
+
+    #region Variables
     [SerializeField] private MainController mainController;
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private GameObject restartButton;
     [SerializeField] private Text scoreText;
     private int score;
+    #endregion
 
+    #region Functions
     public void startGame() {
         mainController.startControl ();
         enemySpawner.startSpawn ();
@@ -47,4 +51,5 @@ public class GameManager : MonoBehaviour {
         score += n;
         scoreText.text = "Score: " + score;
     }
+    #endregion
 }

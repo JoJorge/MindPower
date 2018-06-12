@@ -19,37 +19,37 @@ public class Player : MonoBehaviour {
         }
     }
 
+    #region Variables
     [SerializeField] private int HP;
-    [SerializeField] private int nowHP;
+    private int maxHP;
     private bool died;
+    #endregion
 
-	// Use this for initialization
-	void Start () {
+    #region Behaviours
+    void Start () {
         if (Player.Instance != this) {
             Destroy (this);
         }
-        nowHP = HP;
+        maxHP = HP;
         died = false;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    #endregion
 
+    #region Functions
     public void getDamage(int damage) {
-        nowHP -= damage;
-        if (nowHP <= 0 && !died) {
+        HP -= damage;
+        if (HP <= 0 && !died) {
             die ();
         }
     }
     public void reset() {
-        nowHP = HP;
+        HP = maxHP;
         died = false;
     }
     private void die() {
         died = true;
         GameManager.Instance.gameOver ();
     }
+    #endregion
 
 }

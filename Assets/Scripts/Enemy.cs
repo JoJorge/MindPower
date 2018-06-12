@@ -5,13 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour {
 
+    #region Variables
     protected int HP = 50;
     [SerializeField] protected float speed;
     protected int power = 10;
 	protected float freezedTime;
 	protected bool freezing;
+    #endregion
 
-	// Use this for initialization
+    #region Behaviours
 	void Start () {
         GetComponent<Rigidbody> ().velocity = Vector3.back * speed;
 		freezedTime = 0.0f;
@@ -23,7 +25,9 @@ public class Enemy : MonoBehaviour {
             attack ();
         }
     }
+    #endregion
 
+    #region Function
     public void getDamage(int damage) {
         HP -= damage;
         if (HP <= 0) {
@@ -58,4 +62,5 @@ public class Enemy : MonoBehaviour {
         // disappear after attacking
         Destroy(gameObject);
     }
+    #endregion
 }

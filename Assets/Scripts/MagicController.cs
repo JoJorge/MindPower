@@ -16,6 +16,7 @@ public class MagicController : MonoBehaviour {
     private TGCConnectionController controller;
     #endregion
 
+    #region Behaviours
     public void Start () {
         reading = false;
         controller = GameObject.Find("NeuroSkyTGCController").GetComponent<TGCConnectionController>();
@@ -25,6 +26,7 @@ public class MagicController : MonoBehaviour {
         circle = Resources.Load<Sprite> ("IceCircle");
         type2strategy.Add (MagicMissile.MagicType.Ice, new EnlargeReadingStrategy(iceThresholds, circle));
 	}
+    #endregion
 
     #region Functions
     public bool isReading() {

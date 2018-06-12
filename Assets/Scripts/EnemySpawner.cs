@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
+    #region Variables
     // in second
     [SerializeField] private float minInterval;
     [SerializeField] private float maxInterval;
@@ -11,14 +12,14 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] private GameObject enemy;
     private float roadWidth = 4;
     private bool spawning;
+    #endregion
 
-	// Use this for initialization
+    #region Behaviours
 	void Start () {
         Debug.Assert (minInterval <= maxInterval);
         spawning = false;
 	}
 	
-	// Update is called once per frame
 	void Update () {
         if (spawning) {
             nowInterval -= Time.deltaTime;
@@ -28,7 +29,9 @@ public class EnemySpawner : MonoBehaviour {
             }
         }
 	}
+    #endregion
 
+    #region Functions
     public void startSpawn() {
         nowInterval = Random.Range (minInterval, maxInterval);
         spawning = true;
@@ -44,4 +47,5 @@ public class EnemySpawner : MonoBehaviour {
             }
         }
     }
+    #endregion
 }

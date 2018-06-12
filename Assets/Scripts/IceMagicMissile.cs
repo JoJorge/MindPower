@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class IceMagicMissile : MagicMissile {
 
-    [SerializeField] private GameObject explosion;
-
-    public override void Start () {
-        base.Start ();
-    } 
+    [SerializeField] private GameObject explosion; 
 
     protected override void explode () {
         float range = 3 + power / 20;

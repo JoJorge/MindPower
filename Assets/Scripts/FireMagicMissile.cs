@@ -6,10 +6,6 @@ public class FireMagicMissile : MagicMissile {
 
     [SerializeField] private GameObject explosion;
 
-    public override void Start () {
-        base.Start ();
-    } 
-
     protected override void explode () {
         float range = 3 + power / 20;
         int damage = (int)power;

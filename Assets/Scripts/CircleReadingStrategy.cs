@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class CircleReadingStrategy : ReadingStrategy {
 
+    #region Variables
     private bool completeness;
     private Image circle;
     private Sprite circleSprite;
     private float lowThreshold;
     private float speed = 0.1f;
     private bool completing;
+    #endregion
 
     public CircleReadingStrategy(float th, Sprite c) : base(th){
         circle = GameObject.Find("Canvas").transform.Find("Circle").GetComponent<Image> ();
@@ -19,6 +21,8 @@ public class CircleReadingStrategy : ReadingStrategy {
         completeness = false;
         completing = false;
     }
+
+    #region Functions
     public override float getResult () {
         if (!completeness) {
             return 0;
@@ -57,4 +61,5 @@ public class CircleReadingStrategy : ReadingStrategy {
             }
         }
     }
+    #endregion
 }
