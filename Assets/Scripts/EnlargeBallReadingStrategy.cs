@@ -7,7 +7,6 @@ public class EnlargeBallReadingStrategy : ReadingStrategy {
     private GameObject ball;
     private float speed = 0.2f;
     private float dropSpeed = 0.08f;
-    private float powerTh = 30;
     private float minBallSize;
 
     public EnlargeBallReadingStrategy(float th, GameObject b, float mbs) : base(th) {
