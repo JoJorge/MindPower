@@ -82,7 +82,7 @@ Material:
     - PixelSnap: 0
     - _BumpAttune: 0
     - _BumpScale: 1
-    - _Bumpiness: 0.19
+    - _Bumpiness: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
